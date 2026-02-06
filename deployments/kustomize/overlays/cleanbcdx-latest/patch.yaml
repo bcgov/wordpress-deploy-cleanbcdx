@@ -1,16 +1,18 @@
-# digital-prod/patch.yaml
+# cleanbcdx-bh-latest/patch.yaml
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: wordpress-nginx
   annotations:
      haproxy.router.openshift.io/ip_whitelist: >-
-      # Add all IP's to whitelist, to only allow certain IP ranges.
+      142.32.0.0/16 142.29.0.0/16 10.0.0.0/16
+     haproxy.router.openshift.io/ip_whitelist_comment: >-
+      #CIDR 142... only allow BC Gov internal ips
 spec:
-  host: digital-wp.apps.silver.devops.gov.bc.ca
+  host: cleanbcdx-bh-latest.apps.gold.devops.gov.bc.ca
   to:
     kind: Service
-    name: digital-prod-wordpress-nginx
+    name: cleanbcdx-bh-latest-wordpress-nginx
     weight: 100 
 ---
 apiVersion: apps/v1
@@ -30,14 +32,14 @@ spec:
       - name: php-fpm-secrets-volume
         secret:
           defaultMode: 420
-          secretName: digital-prod-wordpress-secrets
+          secretName: cleanbcdx-bh-latest-wordpress-secrets
       - name: mariadb-secrets-volume
         secret:
           defaultMode: 420
           items:
           - key: MYSQL_PASSWORD
             path: MYSQL_PASSWORD
-          secretName: digital-prod-wordpress-secrets
+          secretName: cleanbcdx-bh-latest-wordpress-secrets
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -60,6 +62,6 @@ spec:
             path: mysql_password
           - key: MYSQL_ROOT_PASSWORD
             path: mysql_root_password
-          secretName: digital-prod-wordpress-secrets
+          secretName: cleanbcdx-bh-latest-wordpress-secrets
 
 

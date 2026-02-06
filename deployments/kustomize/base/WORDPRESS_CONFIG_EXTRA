@@ -2,7 +2,7 @@
 define( 'WP_ALLOW_MULTISITE', true );
 define( 'MULTISITE', !!filter_var( getenv_docker( 'WORDPRESS_MULTISITE', '0' ), FILTER_VALIDATE_BOOLEAN ) );
 define( 'SUBDOMAIN_INSTALL', false );
-define( 'DOMAIN_CURRENT_SITE', getenv_docker( 'APP_DOMAIN', 'apps.silver.devops.gov.bc.ca' ) );
+define( 'DOMAIN_CURRENT_SITE', getenv_docker( 'APP_DOMAIN', 'apps.gold.devops.gov.bc.ca' ) );
 define( 'PATH_CURRENT_SITE', '/' );
 define( 'SITE_ID_CURRENT_SITE', intval( getenv_docker( 'WORDPRESS_SITE_ID_CURRENT_SITE', '1' ) ) );
 define( 'BLOG_ID_CURRENT_SITE', intval( getenv_docker( 'WORDPRESS_SITE_ID_CURRENT_SITE', '1' ) ) );

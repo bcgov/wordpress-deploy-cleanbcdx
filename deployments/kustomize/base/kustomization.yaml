@@ -21,7 +21,7 @@ configMapGenerator:
   - MYSQL_USER=local_user
   - WORDPRESS_DB_PASSWORD_FILE=/run/secrets/WORDPRESS_DB_PASSWORD
   - WORDPRESS_MULTISITE=0
-  - APP_DOMAIN=apps.silver.devops.gov.bc.ca
+  - APP_DOMAIN=apps.gold.devops.gov.bc.ca
   - WORDPRESS_AUTH_KEY_FILE=/run/secrets/wordpress/WORDPRESS_AUTH_KEY
   - WORDPRESS_AUTH_SALT_FILE=/run/secrets/wordpress/WORDPRESS_AUTH_SALT
   - WORDPRESS_LOGGED_IN_KEY_FILE=/run/secrets/wordpress/WORDPRESS_LOGGED_IN_KEY

@@ -1,36 +1,36 @@
-# digital-dev/kustomization.yaml
+# cleanbcdx-bh-latest/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 # Points to the overlay that creates the images.
 resources:
 - ../openshift
 # Update to your license plate in the dev|test|prod namespace.
-namespace: c0cce6-dev
+namespace: f181a8-dev
 commonLabels:
   # app.kubernetes.io/part-of: oc-site-name-wordpress
   app: wordpress
-  site: digital-dev
+  site: cleanbcdx-bh-latest
   env: dev
-namePrefix: digital-dev-
+namePrefix: cleanbcdx-bh-latest-
 images:
   - name: wordpress-mariadb-run
-    newName: image-registry.openshift-image-registry.svc:5000/c0cce6-tools/wordpress-mariadb-run
+    newName: image-registry.openshift-image-registry.svc:5000/f181a8-tools/wordpress-mariadb-run
     newTag: dev
   - name: wordpress-wordpress-run
-    newName: image-registry.openshift-image-registry.svc:5000/c0cce6-tools/wordpress-wordpress-run
-    newTag: dev
+    newName: image-registry.openshift-image-registry.svc:5000/f181a8-tools/wordpress-wordpress-run
+    newTag: latest
   - name: wordpress-nginx-run
-    newName: image-registry.openshift-image-registry.svc:5000/c0cce6-tools/wordpress-nginx-run
-    newTag: dev
+    newName: image-registry.openshift-image-registry.svc:5000/f181a8-tools/wordpress-nginx-run
+    newTag: latest
 #  - name: wordpress-sidecar-run
-#    newName: image-registry.openshift-image-registry.svc:5000/c0cce6-tools/wordpress-sidecar-run
+#    newName: image-registry.openshift-image-registry.svc:5000/f181a8-tools/wordpress-sidecar-run
 #    newTag: dev
 configMapGenerator:
 - name: wordpress-config
   behavior: merge
   literals:
-  - APP_DOMAIN=digital-dev.apps.silver.devops.gov.bc.ca
-  - WORDPRESS_DB_HOST=digital-dev-wordpress-mariadb
+  - APP_DOMAIN=cleanbcdx-bh-latest.apps.gold.devops.gov.bc.ca
+  - WORDPRESS_DB_HOST=cleanbcdx-bh-latest-wordpress-mariadb
 # The Secrets, do not use these secrets in your deployment.
 # secretGenerator:
 # - name: wordpress-secrets

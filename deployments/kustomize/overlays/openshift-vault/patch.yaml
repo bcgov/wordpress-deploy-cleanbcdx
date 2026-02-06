@@ -3,7 +3,7 @@ kind: Route
 metadata:
   name: wordpress-nginx
 spec:
-  host: wp-dev.apps.silver.devops.gov.bc.ca
+  host: wp-dev.apps.gold.devops.gov.bc.ca
 
 ---
 apiVersion: apps/v1
