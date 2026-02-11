@@ -22,7 +22,7 @@ spec:
     type: Git
     git:
       ref: main
-      uri: https://github.com/bcgov/wordpress-deploy-digimod.git
+      uri: https://github.com/bcgov/wordpress-deploy-cleanbcdx.git
     contextDir: openshift/templates/images/nginx/docker
   strategy:
     type: Docker

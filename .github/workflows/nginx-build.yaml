@@ -16,7 +16,7 @@ defaults:
 jobs:
   oc:
     if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' || github.event_name != 'workflow_run' }}
-    uses: bcgov/wordpress-deploy-digimod/.github/workflows/oc-build-image.yaml@main
+    uses: bcgov/wordpress-deploy-cleanbcdx/.github/workflows/oc-build-image.yaml@main
     with:
       image: wordpress-nginx-run
     secrets:
