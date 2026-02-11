@@ -1,4 +1,4 @@
-FROM wordpress:6.8.3-php8.1-fpm-alpine
+FROM wordpress:6.9.1-php8.2-fpm-alpine
 # Install LDAP for Next Active Directory Integration Plugin.
 RUN set -ex; \
         apk add --no-cache --virtual .build-deps \
