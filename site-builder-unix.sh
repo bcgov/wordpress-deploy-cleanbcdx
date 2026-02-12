@@ -32,7 +32,7 @@ if [ ! -z "${OC_ENV}" ] && [ ! -z "${OC_SITE_NAME}" ] && [ ! -z "${PROJECT_NAME}
         if [[ "${SITE_NAME}" == "backup" ]]; then 
             #for backup site, use the backup file storage
             echo "Applying change of file storage for backup site"
-            sed -i 's/storageClassName: .*$/storageClassName: netapp-file-backup' ./deployments/kustomize/overlays/openshift/patch.yaml
+            sed -i 's/storageClassName: .*$/storageClassName: netapp-file-backup/' ./deployments/kustomize/overlays/openshift/patch.yaml
         fi
 
         # Inject namePrefix into patch.yaml
