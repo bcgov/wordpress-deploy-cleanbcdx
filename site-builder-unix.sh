@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #set -euo pipefail
 
-if [ ! -z "${OC_ENV}" ] && [ ! -z "${OC_SITE_NAME}" ];  then
+if [ ! -z "${OC_ENV}" ] && [ ! -z "${OC_SITE_NAME}" ] && [ ! -z "${PROJECT_NAME}" ] && [ ! -z "${SITE_NAME}" ];  then
     #echo >&2 "Project:   ${OC_ENV}"
    # echo >&2 "Site Name: ${OC_SITE_NAME}"
     echo >&2 "Namespace: ${NAMESPACE}"
-	echo >&2 "Environment: ${OC_ENV}" >> $GITHUB_STEP_SUMMARY
+	echo >&2 "Environment: ${OC_ENV}"
     echo >&2 "Project: ${PROJECT_NAME}" 
 	echo >&2 "Site: ${SITE_NAME}" 
     
