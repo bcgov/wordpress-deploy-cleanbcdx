@@ -53,16 +53,16 @@ spec:
             cpu: 400m
             memory: 500Mi
           requests:
-            cpu: 100m
-            memory: 250Mi
+            cpu: 50m
+            memory: 200Mi
       - name: wordpress-nginx
         resources:
           limits:
             cpu: 400m
             memory: 500Mi
           requests:
-            cpu: 100m
-            memory: 250Mi
+            cpu: 50m
+            memory: 200Mi
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30
@@ -98,7 +98,7 @@ spec:
             cpu: 200m
             memory: 500Mi
           requests:
-            cpu: 100m
+            cpu: 50m
             memory: 100Mi
 ---
 ## Patch sidecar for OS dev env.
