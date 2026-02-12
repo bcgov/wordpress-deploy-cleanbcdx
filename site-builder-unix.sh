@@ -25,6 +25,13 @@ if [ ! -z "${OC_ENV}" ] && [ ! -z "${OC_SITE_NAME}" ];  then
         sed -i 's/APP_DOMAIN=.*$/APP_DOMAIN='$OC_SITE_NAME'.apps.gold.devops.gov.bc.ca/' ./deployments/kustomize/overlays/cleanbcdx-${OC_ENV}/kustomization.yaml
         sed -i 's/WORDPRESS_DB_HOST=.*$/WORDPRESS_DB_HOST='${OC_SITE_NAME}'-wordpress-mariadb/' ./deployments/kustomize/overlays/cleanbcdx-${OC_ENV}/kustomization.yaml
         sed -i 's/secretName: .*$/secretName: '${OC_SITE_NAME}'-wordpress-secrets/' ./deployments/kustomize/overlays/cleanbcdx-${OC_ENV}/patch.yaml
+
+        if [[ "$OC_SITE_NAME" == "backup" ]]; then 
+            #for backup site, use the backup file storage
+            echo "Applying change of file storage for backup site"
+            sed -i 's/storageClassName: .*$/storageClassName: netapp-file-backup' ./deployments/kustomize/overlays/openshift/patch.yaml
+        fi
+
         # Inject namePrefix into patch.yaml
         # sed -i.bak "s|^# *namePrefix:.*$|namePrefix: $OC_SITE_NAME-|g" ./deployments/kustomize/overlays/cleanbcdx-${OC_ENV}/patch.yaml
         oc apply -k ./deployments/kustomize/overlays/cleanbcdx-${OC_ENV}
