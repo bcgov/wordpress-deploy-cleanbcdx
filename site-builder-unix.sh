@@ -2,9 +2,12 @@
 #set -euo pipefail
 
 if [ ! -z "${OC_ENV}" ] && [ ! -z "${OC_SITE_NAME}" ];  then
-    echo >&2 "Project:   ${OC_ENV}"
-    echo >&2 "Site Name: ${OC_SITE_NAME}"
+    #echo >&2 "Project:   ${OC_ENV}"
+   # echo >&2 "Site Name: ${OC_SITE_NAME}"
     echo >&2 "Namespace: ${NAMESPACE}"
+	echo >&2 "Environment: ${OC_ENV}" >> $GITHUB_STEP_SUMMARY
+    echo >&2 "Project: ${PROJECT_NAME}" 
+	echo >&2 "Site: ${SITE_NAME}" 
     
     whoAmI="$(oc whoami 2> /dev/null)"
     # This means i am logged in.
@@ -26,7 +29,7 @@ if [ ! -z "${OC_ENV}" ] && [ ! -z "${OC_SITE_NAME}" ];  then
         sed -i 's/WORDPRESS_DB_HOST=.*$/WORDPRESS_DB_HOST='${OC_SITE_NAME}'-wordpress-mariadb/' ./deployments/kustomize/overlays/cleanbcdx-${OC_ENV}/kustomization.yaml
         sed -i 's/secretName: .*$/secretName: '${OC_SITE_NAME}'-wordpress-secrets/' ./deployments/kustomize/overlays/cleanbcdx-${OC_ENV}/patch.yaml
 
-        if [[ "$OC_SITE_NAME" == "backup" ]]; then 
+        if [[ "${SITE_NAME}" == "backup" ]]; then 
             #for backup site, use the backup file storage
             echo "Applying change of file storage for backup site"
             sed -i 's/storageClassName: .*$/storageClassName: netapp-file-backup' ./deployments/kustomize/overlays/openshift/patch.yaml
