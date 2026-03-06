@@ -54,7 +54,7 @@ spec:
             memory: 500Mi
           requests:
             cpu: 50m
-            memory: 200Mi
+            memory: 300Mi
       - name: wordpress-nginx
         resources:
           limits:
@@ -62,7 +62,7 @@ spec:
             memory: 500Mi
           requests:
             cpu: 50m
-            memory: 200Mi
+            memory: 100Mi
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30
