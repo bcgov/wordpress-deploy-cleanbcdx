@@ -11,7 +11,6 @@ HEALTHCHECK --start-period=5s CMD pgrep nginx
 
 VOLUME ["/var/www/html", "/var/log/nginx"]
 
-#ng. mar 10, 2026. No longer need a default. Make sure the nginx.conf handles everything.
-#COPY default.conf /etc/nginx/conf.d/default.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80 443
