@@ -24,6 +24,8 @@ RUN \
     usr/bin/mysqld$ \
     usr/bin/mariadb$ \
     usr/bin/mariadbd$ \
+    usr/bin/mysqldump$ \
+    usr/bin/mariadb-dump$ \
     usr/bin/getconf$ \
     usr/bin/getent$ \
     usr/bin/my_print_defaults$ \
