@@ -18,7 +18,7 @@ SHELL ["/bin/ash", "-euo", "pipefail", "-c"]
 
 # Mariadb versions are here: https://pkgs.alpinelinux.org/packages?name=mariadb&branch=v3.15
 RUN \
-  apk add --no-cache mariadb && \
+  apk add --no-cache mariadb mariadb-client && \
   TO_KEEP=$(echo " \
     usr/bin/mysql$ \
     usr/bin/mysqld$ \
