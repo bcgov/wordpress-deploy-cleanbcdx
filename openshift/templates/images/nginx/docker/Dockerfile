@@ -1,4 +1,4 @@
-FROM nginx:1.23.1-alpine
+FROM nginx:1.30.7-alpine
 
 RUN set -x \
     && sed -i -e 's/^\(nginx:[^:]\):[0-9]*:[0-9]*:/\1:1001:0:/' /etc/passwd \
